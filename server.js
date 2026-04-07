@@ -1,10 +1,20 @@
 
 const express = require('express');
+const path = require('path');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('public'));
-app.use('/qr_samples', express.static('qr_samples'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/qr_samples', express.static(path.join(__dirname, 'qr_samples')));
+
+// Important: These routes tell Vercel to serve your frontpage correctly
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/index.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 let users = {};
 let rewards = {
@@ -134,4 +144,6 @@ app.get('/data', (req, res) => {
   res.json(user);
 });
 
-app.listen(3000,()=>console.log("Running on http://localhost:3000"));
+// The port will handle itself on Vercel
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,()=>console.log(`Running on port ${PORT}`));
