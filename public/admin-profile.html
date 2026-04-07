@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architect | Pranav Bisht</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Outfit',sans-serif; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            justify-content: center;
+        }
+
+        .bg-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #111827 0%, #030712 100%);
+        }
+
+        .profile-card {
+            max-width: 450px;
+            width: 90%;
+            background: var(--card-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--card-border);
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            animation: fadeIn 1s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } }
+
+        .image-container {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .profile-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to top, var(--card-bg), transparent);
+        }
+
+        .info-section {
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 14px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .watermark {
+            position: absolute;
+            bottom: 20px; right: 20px;
+            font-size: 0.6rem;
+            opacity: 0.2;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+
+<div class="profile-card">
+    <div class="image-container">
+        <img src="admin.jpg" alt="Pranav Bisht">
+        <div class="image-overlay"></div>
+    </div>
+    
+    <div class="info-section">
+        <h1>Pranav Bisht</h1>
+        <p class="tagline">Lead Systems Architect</p>
+        
+        <p class="bio">
+            Pranav is a visionary technologist specializing in the intersection of physical infrastructure and elite digital experiences. As the Architect of StairStep, he engineered this platform to transform every climb into a tangible reward, pushing for a healthier, more tech-forward campus ecosystem.
+        </p>
+
+        <a href="/" class="btn-home">Return to Dashboard</a>
+    </div>
+
+    <div class="watermark">Architect Protocol | v2.0</div>
+</div>
+
+</body>
+</html>
