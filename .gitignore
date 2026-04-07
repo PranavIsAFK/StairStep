@@ -1,0 +1,6 @@
+node_modules/
+.env
+*.log
+package-lock.json
+qr_samples/
+debug_rewards.json
