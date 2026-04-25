@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StairStep Guide | Pro Instructions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #111827 0%, #030712 100%);
+        }
+
+        .container { width: 100%; max-width: 600px; padding: 40px 20px; z-index: 10; }
+
+        h1 {
+            font-size: 3rem; font-weight: 800; letter-spacing: -0.05em;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 3rem; text-align: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
+            border-radius: 32px; padding: 32px; margin-bottom: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #fff; }
+
+        .step { display: flex; gap: 20px; margin-bottom: 24px; align-items: flex-start; }
+        .step-icon {
+            width: 40px; height: 40px; background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary); color: var(--primary);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-weight: 800; font-size: 1.1rem;
+        }
+        .step-content h3 { font-size: 1.1rem; margin-bottom: 4px; color: #fff; }
+        .step-content p { font-size: 0.9rem; color: var(--text-muted); }
+
+        .dev-section { border-top: 1px solid var(--card-border); padding-top: 2rem; margin-top: 2rem; }
+        .dev-header { display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; }
+        .dev-header h3 { font-size: 1.25rem; font-weight: 700; background: linear-gradient(to right, var(--primary), #fff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .back-link { position: absolute; top: 40px; left: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+        .back-link:hover { color: white; }
+
+        .watermark { position: fixed; bottom: 24px; right: 24px; font-size: 0.75rem; color: var(--text-muted); opacity: 0.3; }
+
+    </style>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+
+<div class="container">
+    <a href="/" class="back-link">← Return Dashboard</a>
+    <h1>App Protocol</h1>
+
+    <div class="card">
+        <h2>Operating Manual</h2>
+        
+        <div class="step">
+            <div class="step-icon">01</div>
+            <div class="step-content">
+                <h3>Identity Verification</h3>
+                <p>Initialize your session by entering your official registration number on the main login screen.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">02</div>
+            <div class="step-content">
+                <h3>Protocol Sequentiality</h3>
+                <p>Scanner strictly enforces sequential movement. You must log each floor in order (1, 2, 3...) to earn points.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">03</div>
+            <div class="step-content">
+                <h3>Rewards Procurement</h3>
+                <p>Accumulated points can be exchanged for premium perks in the "Available Perks" section. Each redemption is immediately logged.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="dev-section">
+            <div class="dev-header">
+                <div>
+                   <h3>Pranav Bisht</h3>
+                   <p style="font-size: 0.8rem; color: var(--text-muted);">Lead Systems Architect</p> 
+                </div>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Dedicated to engineering seamless digital ecosystems that bridge the gap between physical exertion and digital gratification. This platform represents a benchmark in campus health-tech integration.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="watermark">User Protocol Systems | Pranav Bisht</div>
+
+</body>
+</html>
