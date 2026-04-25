@@ -4,3 +4,4 @@ node_modules/
 package-lock.json
 qr_samples/
 debug_rewards.json
+db.json

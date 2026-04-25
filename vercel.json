@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/(index.html|admin.html|qrs.html|admin-profile.html)",
+      "src": "/(index.html|admin.html|qrs.html|admin-profile.html|leaderboard.html)",
       "dest": "/public/$1"
     },
     {

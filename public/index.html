@@ -235,6 +235,81 @@
 
         .watermark { position: fixed; bottom: 20px; right: 20px; opacity: 0.3; font-size: 0.7rem; font-family: monospace; pointer-events: none; }
 
+        /* Streak Section */
+        .streak-card { display: flex; align-items: center; gap: 20px; }
+        .streak-flame { font-size: 3rem; animation: flamePulse 1s infinite alternate; }
+        @keyframes flamePulse { 0% { transform: scale(1); filter: brightness(1); } 100% { transform: scale(1.15); filter: brightness(1.3); } }
+        .streak-info { flex: 1; }
+        .streak-count { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #f97316, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .streak-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
+        .streak-best { font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-top: 4px; }
+        .streak-bonus { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 12px; padding: 8px 14px; font-size: 0.75rem; color: #fb923c; font-weight: 700; text-align: center; min-width: 90px; }
+
+        /* Badges Section */
+        .badges-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 1rem; }
+        .badge-item { text-align: center; padding: 12px 4px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); transition: all 0.3s; position: relative; }
+        .badge-item.unlocked { background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.3); }
+        .badge-item.locked { opacity: 0.35; filter: grayscale(1); }
+        .badge-item:hover { transform: translateY(-2px); }
+        .badge-icon { font-size: 1.6rem; margin-bottom: 4px; }
+        .badge-name { font-size: 0.55rem; color: var(--text-muted); font-weight: 600; line-height: 1.2; }
+        .badge-new { position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; background: var(--secondary); border-radius: 50%; animation: badgePing 1s infinite; }
+        @keyframes badgePing { 0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.6); } 100% { box-shadow: 0 0 0 8px transparent; } }
+
+        /* Confetti Canvas */
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+
+        /* Mini Leaderboard Standings */
+        .standings-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; padding: 20px; margin-bottom: 24px;
+        }
+        .standing-item {
+            display: flex; align-items: center; gap: 12px; padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .standing-item:last-child { border-bottom: none; }
+        .standing-rank { font-weight: 800; width: 24px; font-size: 0.9rem; }
+        .rank-1 { color: var(--gold); }
+        .rank-2 { color: var(--silver); }
+        .rank-3 { color: #cd7f32; }
+        .standing-user { flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; opacity: 0.9; }
+        .standing-pts { font-weight: 800; color: var(--primary); font-size: 0.85rem; }
+
+        /* Premium Header Button */
+        .header-btn {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 1.5rem;
+            padding: 12px 32px; border-radius: 24px; 
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(217, 119, 6, 0.2));
+            border: 1px solid var(--gold); color: var(--gold);
+            font-weight: 900; font-size: 0.9rem; text-decoration: none;
+            letter-spacing: 0.15em; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+            animation: buttonPulse 2s infinite alternate;
+        }
+        .header-btn:hover { background: var(--gold); color: var(--bg); transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 30px rgba(251, 191, 36, 0.3); animation-play-state: paused; }
+        @keyframes buttonPulse { 0% { box-shadow: 0 0 10px rgba(251, 191, 36, 0.1); } 100% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.4); } }
+
+        /* High Visibility Alert Modal */
+        .error-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(20px);
+            z-index: 5000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .error-modal.show { opacity: 1; pointer-events: auto; }
+        .error-card {
+            width: 100%; max-width: 400px; padding: 40px; border-radius: 32px;
+            background: rgba(15, 23, 42, 0.8); border: 2px solid var(--error);
+            text-align: center; transform: scale(0.9); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .error-modal.show .error-card { transform: scale(1); }
+        .error-icon { font-size: 4rem; margin-bottom: 1rem; animation: shake 0.5s ease-in-out; }
+        .error-title { font-size: 1.5rem; font-weight: 800; color: var(--error); margin-bottom: 0.5rem; }
+        .error-msg { font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.4; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+
     </style>
 </head>
 <body>
@@ -260,10 +335,25 @@
     <header>
         <h1>StairStep</h1>
         <p class="subtitle">Peak Analytics Dashboard</p>
+        <a href="/leaderboard.html" class="header-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            GLOBAL HALL OF FAME
+        </a>
     </header>
 
     <!-- User Module -->
     <div id="main-content" style="display: none;">
+        <!-- Global Standings Preview -->
+        <div class="standings-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span class="grid-title" style="margin: 0; font-size: 0.8rem;">CURRENT STANDINGS</span>
+                <span style="font-size: 0.6rem; color: var(--gold); font-weight: 800;">TOP 3 EXPLORERS</span>
+            </div>
+            <div id="mini-leaderboard">
+                <!-- Top 3 Injected Here -->
+            </div>
+        </div>
+
         <div class="user-tag">
             <span id="current-user-tag" style="font-weight: 800; opacity: 0.8;">---</span>
             <span class="logout-btn" onclick="logout()">LOGOUT SESSION</span>
@@ -289,6 +379,26 @@
 
         <div class="card">
             <div id="reader" style="border-radius: 20px; overflow: hidden; background: #000;"></div>
+        </div>
+
+        <!-- Streak Card -->
+        <div class="card" id="streak-card" style="display:none;">
+            <div class="streak-card">
+                <div class="streak-flame" id="streak-icon">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-label">Current Streak</div>
+                    <div class="streak-count" id="streak-count">0 days</div>
+                    <div class="streak-best" id="streak-best">Best: 0 days</div>
+                </div>
+                <div class="streak-bonus" id="streak-next">Next bonus at 3 days</div>
+            </div>
+        </div>
+
+        <!-- Badges Card -->
+        <div class="card" id="badges-card" style="display:none;">
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; opacity: 0.7;">ACHIEVEMENTS</h3>
+            <p style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem;"><span id="badge-progress">0/10</span> unlocked</p>
+            <div class="badges-grid" id="badges-grid"></div>
         </div>
 
         <div class="card">
@@ -323,7 +433,18 @@
 </div>
 
 <div id="toast" class="toast">Success!</div>
+<canvas id="confetti-canvas"></canvas>
 <div class="watermark">DESIGNED BY PRANAV BISHT</div>
+
+<!-- High Impact Error Modal -->
+<div id="error-modal" class="error-modal" onclick="if(event.target === this) showErrorModal(false)">
+    <div class="error-card">
+        <div class="error-icon">⚠️</div>
+        <div id="error-title" class="error-title">PROTOCOL ERROR</div>
+        <div id="error-msg" class="error-msg">Invalid movement detected.</div>
+        <button onclick="showErrorModal(false)" class="action-btn" style="background: var(--error);">DISMISS ALERT</button>
+    </div>
+</div>
 
 <!-- Inventory UI Overlay -->
 <div id="inventory-overlay" class="inventory-overlay" onclick="if(event.target === this) toggleInventory(false)">
@@ -354,6 +475,64 @@
         setTimeout(() => t.classList.remove('show'), 3000);
     }
 
+    function showErrorModal(show, title, msg) {
+        const modal = document.getElementById('error-modal');
+        if (show) {
+            document.getElementById('error-title').innerText = title || "PROTOCOL ERROR";
+            document.getElementById('error-msg').innerText = msg || "Invalid operation detected.";
+            modal.classList.add('show');
+        } else {
+            modal.classList.remove('show');
+        }
+    }
+
+    // ═══ CONFETTI ═══
+    function launchConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const particles = [];
+        const colors = ['#6366f1','#ec4899','#8b5cf6','#fbbf24','#10b981','#f97316'];
+        for (let i = 0; i < 120; i++) {
+            particles.push({
+                x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+                y: canvas.height / 2,
+                vx: (Math.random() - 0.5) * 15,
+                vy: Math.random() * -18 - 4,
+                w: Math.random() * 8 + 4,
+                h: Math.random() * 6 + 2,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                rot: Math.random() * 360,
+                rotV: (Math.random() - 0.5) * 15,
+                life: 1
+            });
+        }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let alive = false;
+            particles.forEach(p => {
+                if (p.life <= 0) return;
+                alive = true;
+                p.x += p.vx;
+                p.vy += 0.4;
+                p.y += p.vy;
+                p.rot += p.rotV;
+                p.life -= 0.012;
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rot * Math.PI / 180);
+                ctx.globalAlpha = p.life;
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+                ctx.restore();
+            });
+            if (alive) requestAnimationFrame(draw);
+            else ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        draw();
+    }
+
     async function login() {
         const regNo = document.getElementById('reg-input').value.trim();
         if(!regNo) return;
@@ -364,7 +543,7 @@
     function toggleInventory(show) {
         const overlay = document.getElementById('inventory-overlay');
         overlay.classList.toggle('show', show);
-        if(show) fetchData(); // Sync on open
+        if(show) fetchData();
     }
 
     function logout() {
@@ -377,15 +556,13 @@
         const isLoggedIn = !!regNo;
         
         try {
-            // Fetch User
-            let user = { points: 0, history: [] };
+            let user = { points: 0, history: [], streakData: null, allBadges: [] };
             if (isLoggedIn) {
                 const uRes = await fetch(`/data?regNo=${regNo}&t=${Date.now()}`);
                 if (uRes.status === 412) return logout();
                 user = await uRes.json();
             }
 
-            // Fetch Rewards
             let rewards = cachedRewards;
             if(!rewards) {
                 const rRes = await fetch(`/rewards?t=${Date.now()}`);
@@ -393,21 +570,67 @@
                 cachedRewards = rewards;
             }
 
-            // Fallback if empty
             if(!rewards || Object.keys(rewards).length === 0) rewards = DEFAULT_REWARDS;
 
-            renderUI(user, rewards, isLoggedIn);
+            // Fetch Leaderboard for Preview
+            const lRes = await fetch(`/leaderboard?t=${Date.now()}`);
+            const leaderboard = await lRes.json();
+
+            renderUI(user, rewards, isLoggedIn, leaderboard);
         } catch (err) {
             console.error("DATA_ERR:", err);
-            renderUI({points:0, history:[]}, DEFAULT_REWARDS, isLoggedIn);
+            renderUI({points:0, history:[], streakData: null, allBadges: []}, DEFAULT_REWARDS, isLoggedIn, []);
         }
     }
 
-    function renderUI(user, rewards, isLoggedIn) {
+    function renderUI(user, rewards, isLoggedIn, leaderboard) {
         if(isLoggedIn) {
+            // Render Mini Leaderboard
+            const miniL = document.getElementById('mini-leaderboard');
+            if (leaderboard && leaderboard.length) {
+                miniL.innerHTML = leaderboard.slice(0, 3).map((u, idx) => `
+                    <div class="standing-item">
+                        <span class="standing-rank rank-${idx+1}">#${idx+1}</span>
+                        <span class="standing-user">${u.regNo}</span>
+                        <span class="standing-pts">${u.points} EXP</span>
+                    </div>
+                `).join('');
+            } else {
+                miniL.innerHTML = '<p style="text-align:center; opacity:0.3; font-size:0.7rem;">Waiting for contenders...</p>';
+            }
+
             document.getElementById('points-val').innerText = user.points || 0;
             document.getElementById('current-user-tag').innerText = `USER::${localStorage.getItem('regNo')}`;
             updateRank(user.points || 0);
+
+            // ═══ STREAK UI ═══
+            const streakCard = document.getElementById('streak-card');
+            if (user.streakData) {
+                streakCard.style.display = 'block';
+                const s = user.streakData;
+                document.getElementById('streak-count').innerText = `${s.currentStreak} day${s.currentStreak !== 1 ? 's' : ''}`;
+                document.getElementById('streak-best').innerText = `Best: ${s.bestStreak} days`;
+                document.getElementById('streak-icon').innerText = s.currentStreak >= 7 ? '🔥' : s.currentStreak >= 3 ? '🔥' : '❄️';
+                const bonusMilestones = [3, 7, 14, 30];
+                const nextBonus = bonusMilestones.find(m => m > s.currentStreak);
+                document.getElementById('streak-next').innerText = nextBonus
+                    ? `Next bonus at ${nextBonus} days`
+                    : '🏆 Max streak bonus reached!';
+            }
+
+            // ═══ BADGES UI ═══
+            const badgesCard = document.getElementById('badges-card');
+            if (user.allBadges && user.allBadges.length) {
+                badgesCard.style.display = 'block';
+                const unlocked = user.allBadges.filter(b => b.unlocked).length;
+                document.getElementById('badge-progress').innerText = `${unlocked}/${user.allBadges.length}`;
+                document.getElementById('badges-grid').innerHTML = user.allBadges.map(b => `
+                    <div class="badge-item ${b.unlocked ? 'unlocked' : 'locked'}" title="${b.desc}">
+                        <div class="badge-icon">${b.icon}</div>
+                        <div class="badge-name">${b.name}</div>
+                    </div>
+                `).join('');
+            }
             
             const hList = document.getElementById('history-list');
             hList.innerHTML = user.history.length ? user.history.slice(0,5).map(i => `
@@ -469,6 +692,10 @@
             const data = await res.json();
             if(data.error) throw new Error(data.error);
             showToast("Success! Check your inventory.");
+            launchConfetti();
+            if (data.newBadges && data.newBadges.length) {
+                setTimeout(() => showToast(`🏅 Badge unlocked: ${data.newBadges.map(b => b.icon + ' ' + b.name).join(', ')}`), 2000);
+            }
             fetchData();
         } catch(e) {
             showToast(e.message);
@@ -498,11 +725,11 @@
         if(regNo) {
             document.getElementById('auth-overlay').classList.add('hidden');
             document.getElementById('main-content').style.display = 'block';
-            document.getElementById('inv-trigger').style.display = 'flex'; // Show Gift
+            document.getElementById('inv-trigger').style.display = 'flex';
             startScanner();
         }
         fetchData();
-        setInterval(fetchData, 10000); // Periodic sync
+        setInterval(fetchData, 10000);
     }
 
     function startScanner() {
@@ -517,9 +744,15 @@
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({ floor: floor, regNo: localStorage.getItem('regNo') })
                     }).then(r => r.json()).then(res => {
-                        if(res.error) showToast(res.error);
-                        else { 
-                            showToast(res.message); 
+                        if(res.error) {
+                            if (res.error.includes("Invalid movement") || res.error.includes("Already logged")) {
+                                showErrorModal(true, "LOG_DENIED", res.error);
+                            } else {
+                                showToast(res.error);
+                            }
+                        } else { 
+                            showToast(res.message);
+                            if (res.newBadges && res.newBadges.length) launchConfetti();
                             fetchData(); 
                         }
                     });
