@@ -127,7 +127,7 @@
 <script>
     async function loadLeaderboard() {
         try {
-            const res = await fetch('/leaderboard');
+            const res = await fetch('/api/leaderboard');
             const data = await res.json();
             const body = document.getElementById('leaderboard-body');
             

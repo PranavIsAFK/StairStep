@@ -7,17 +7,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/(index.html|admin.html|qrs.html|admin-profile.html|leaderboard.html)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/qr_samples/(.*)",
-      "dest": "/qr_samples/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "server.js" }
   ]
 }

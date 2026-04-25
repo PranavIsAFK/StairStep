@@ -257,7 +257,7 @@ app.post('/admin/add-reward', (req, res) => {
   res.json({ message: "Reward added successfully!", rewards });
 });
 
-app.get('/leaderboard', (req, res) => {
+app.get('/api/leaderboard', (req, res) => {
   const leaderboard = Object.values(users)
     .map(u => ({
       regNo: u.regNo,
@@ -361,3 +361,5 @@ app.get('/admin/stats', (req, res) => {
 // The port will handle itself on Vercel
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+
+module.exports = app;

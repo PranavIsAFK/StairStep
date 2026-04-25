@@ -573,7 +573,7 @@
             if(!rewards || Object.keys(rewards).length === 0) rewards = DEFAULT_REWARDS;
 
             // Fetch Leaderboard for Preview
-            const lRes = await fetch(`/leaderboard?t=${Date.now()}`);
+            const lRes = await fetch(`/api/leaderboard?t=${Date.now()}`);
             const leaderboard = await lRes.json();
 
             renderUI(user, rewards, isLoggedIn, leaderboard);
