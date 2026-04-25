@@ -8,14 +8,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/qr_samples', express.static(path.join(__dirname, 'qr_samples')));
 
-// Important: These routes tell Vercel to serve your frontpage correctly
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.get('/index.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/leaderboard.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'leaderboard.html')));
+app.get('/admin.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.get('/info.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'info.html')));
+app.get('/qrs.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'qrs.html')));
+app.get('/admin-profile.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin-profile.html')));
 
 // ═══════════════════════════════════════════════════════════
 //  DATA PERSISTENCE — JSON file-based storage
